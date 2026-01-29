@@ -139,3 +139,4 @@ docker build -t travel-guide .
 ├── requirements.txt        # Python dependencies
 └── README.md               # Project documentation
 ```
+## End of README
