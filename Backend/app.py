@@ -126,4 +126,9 @@ def generate_audio_guide():
         "audioBase64": encoded_audio
     }
 
-app.run(debug=True)
+if __name__ == "__main__":
+    debug_env = os.getenv("FLASK_DEBUG", "False").lower()
+    debug = debug_env in ("1", "true", "yes")
+    port = int(os.getenv("PORT", "5000"))
+    # Bind to 0.0.0.0 so containers and PaaS can reach the server when running directly
+    app.run(host="0.0.0.0", port=port, debug=debug)
