@@ -86,7 +86,7 @@ This project is a web application that generates personalized audio travel guide
 
 ## Deployment
 
-### Option 1: Render.com (Recommended)
+### Option 1: Render.com (Recommended for Backend)
 
 **Backend Deployment:**
 
@@ -95,30 +95,27 @@ This project is a web application that generates personalized audio travel guide
 3. New Web Service → Connect GitHub repo
 4. Configure:
    - **Build command:** `pip install -r requirements.txt`
-   - **Start command:** `gunicorn Backend.app:app`
+   - **Start command:** `gunicorn --chdir Backend app:app`
    - **Environment variables:** Add `GOOGLE_API_KEY` and `MURF_API_KEY`
 5. Deploy and note the backend URL (e.g., `https://travel-guide-api.onrender.com`)
 
+### Option 2: Netlify (Recommended for Frontend)
+
 **Frontend Deployment:**
 
-1. Create account at [vercel.com](https://vercel.com)
-2. Import your GitHub repo
-3. Set root directory to `Frontend`
-4. Deploy
+1. Push code to GitHub.
+2. Log in to [netlify.com](https://www.netlify.com/).
+3. Click **"Add new site"** -> **"Import from existing project"**.
+4. Connect to GitHub and select your repository.
+5. Netlify should automatically detect the configuration from the `netlify.toml` file (Publish directory: `Frontend`).
+6. Click **Deploy**.
 
-**After deployment**, update `Frontend/index.js`:
+**After deployment**, update `Frontend/index.js` with your Render Backend URL:
 
 ```javascript
 const GENERATE_AUDIO_GUIDE_API_URL =
   "https://your-backend-url.onrender.com/generate-audio-guide";
 ```
-
-### Option 2: Railway
-
-1. Go to [railway.app](https://railway.app)
-2. Create new project → Connect GitHub repo
-3. Add `GOOGLE_API_KEY` and `MURF_API_KEY` environment variables
-4. Auto-deploys when you push
 
 ### Option 3: Docker + Any Cloud
 
