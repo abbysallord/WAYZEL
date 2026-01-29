@@ -95,7 +95,7 @@ This project is a web application that generates personalized audio travel guide
 3. New Web Service → Connect GitHub repo
 4. Configure:
    - **Build command:** `pip install -r requirements.txt`
-   - **Start command:** `gunicorn --chdir Backend app:app`
+   - **Start command:** `gunicorn --chdir Backend --bind 0.0.0.0:$PORT app:app`
    - **Environment variables:** Add `GOOGLE_API_KEY` and `MURF_API_KEY`
 5. Deploy and note the backend URL (e.g., `https://travel-guide-api.onrender.com`)
 
